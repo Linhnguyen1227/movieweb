@@ -1,0 +1,102 @@
+@use '../../scss/' as *;
+
+.banner {
+    height: 50vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include overlay;
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100px;
+        background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+    }
+}
+.movie-content {
+    @include flex(flex-start, flex-start);
+    max-width: 1260px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    margin-top: -200px;
+    padding: 0 2rem;
+
+    &_poster {
+        flex: 1;
+        @include mobile {
+            display: none;
+        }
+        &_img {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border-radius: $border-radius;
+            padding-top: 165%;
+        }
+    }
+    &_info {
+        width: 70%;
+        padding-left: 2rem;
+        position: relative;
+        @include mobile {
+            width: 100%;
+            padding-left: 0;
+        }
+        & > * {
+            margin-bottom: 2rem;
+        }
+        .title {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .genres > * ~ * {
+            margin-left: 0.5rem;
+        }
+        .genre-item {
+            border: 2px solid $white;
+            padding: 0.5rem 1.5rem;
+            border-radius: $border-radius;
+        }
+    }
+}
+
+.cast {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+
+    &_item {
+        &_img {
+            padding-top: 160px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-bottom: 0.5rem;
+        }
+
+        & p {
+            font-size: 1rem;
+        }
+    }
+}
+
+.video {
+    &_title {
+        margin-bottom: 2rem;
+    }
+}
